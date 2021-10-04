@@ -35,7 +35,6 @@ namespace OblTCPServer
 
 			}
 		}
-
 		private static void HandleClient(TcpClient socket)
 		{
 			NetworkStream ns = socket.GetStream();
@@ -44,9 +43,11 @@ namespace OblTCPServer
 
 			while (true)
 			{
-				writer.WriteLine("Valgmuligheder for denne server:\r\nSend HentAlle, Hent eller Gem");
+				writer.WriteLine("Valgmuligheder for denne server:\r\nSend hentAlle, hent eller gem");
 				writer.Flush();
 				string message = reader.ReadLine();
+				writer.WriteLine("Skriv det specifikke ID for den spiller du vil hente");
+				writer.Flush();
 				string messageID = reader.ReadLine();
 
 				if (message.ToLower().StartsWith("hentalle"))
